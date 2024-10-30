@@ -3,7 +3,7 @@
     Create Employee
 @endsection
 @section('main')
-    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('department.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row w-100 p-5">
             <div class="col">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-success btn-block">Save</button>
-                        <a href="{{ route('category.index') }}" class="btn btn-danger btn-block">Cancel</a>
+                        <a href="{{ route('department.index') }}" class="btn btn-danger btn-block">Cancel</a>
                     </div>
                 </div>
             </div>

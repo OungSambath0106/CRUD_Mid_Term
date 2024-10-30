@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +24,7 @@ Route::get('/', function () {
 
 Route::resources([
     "employees" => UserController::class,
-    "category" => CategoryController::class,
-    "product" => ProductController::class
+    "department" => DepartmentController::class,
 ]);
 
 Route::controller(AccountController::class)->group(function()

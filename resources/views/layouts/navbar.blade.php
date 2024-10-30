@@ -9,13 +9,10 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('employees.index') }}"> User </a>
+                        <a class="nav-link" aria-current="page" href="{{ route('employees.index') }}"> Employee </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('category.index') }}"> category </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('product.index') }}"> Product </a>
+                        <a class="nav-link" href="{{ route('department.index') }}"> Department </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"

@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CategoryController extends Controller
+class DepartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
           $userId = Auth::id();
-          $category = Category::where('userid', $userId)->get();
-          return view('category.index', ['category' => $category]);
+          $department = Department::where('userid', $userId)->get();
+          return view('department.index', ['department' => $department]);
 
     }
 
@@ -26,7 +23,7 @@ class CategoryController extends Controller
     public function create()
     {
         $user = User::all();
-        return view('category.create', ['user' => $user]);
+        return view('department.create', ['user' => $user]);
     }
 
     public function store(Request $request)
@@ -45,12 +42,12 @@ class CategoryController extends Controller
         ];
 
         try {
-            Category::create($saveData);
+            Department::create($saveData);
 
-            return redirect()->route('category.index')->with('success', 'Category has been created successfully.');
+            return redirect()->route('department.index')->with('success', 'department has been created successfully.');
         } catch (\Exception $e) {
             // Handle any exceptions or errors
-            return redirect()->route('category.index')->with('error', 'Error creating the Category. Please try again.');
+            return redirect()->route('department.index')->with('error', 'Error creating the department. Please try again.');
         }
     }
 
@@ -59,8 +56,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        $category = Category::find($id);
-        return view('category.details', compact('category'));
+        $department = Department::find($id);
+        return view('department.details', compact('department'));
     }
 
     /**
@@ -68,13 +65,13 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category = Category::find($id);
-        return view('category.edit', compact('category'));
+        $department = Department::find($id);
+        return view('department.edit', compact('department'));
     }
 
     public function update(Request $request, string $id)
     {
-        $editData = Category::find($id);
+        $editData = Department::find($id);
         $editDataRecord = [
             'name' => $request->name,
             'description' => $request->description,
@@ -85,13 +82,13 @@ class CategoryController extends Controller
 
         try {
             if ($updateSuccess) {
-                return redirect()->route('category.index', $id)->with('success', 'Category has been updated successfully.');
+                return redirect()->route('department.index', $id)->with('success', 'department has been updated successfully.');
             } else {
-                return redirect()->route('category.index', $id)->with('error', 'Error updating the Category. Please try again.');
+                return redirect()->route('department.index', $id)->with('error', 'Error updating the department. Please try again.');
             }
         } catch (\Exception $e) {
             // Handle any exceptions or errors
-            return redirect()->route('category.index', $id)->with('error', 'Error updating the Category. Please try again.');
+            return redirect()->route('department.index', $id)->with('error', 'Error updating the department. Please try again.');
         }
     }
 
@@ -99,18 +96,18 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         try {
-            $category = Category::find($id);
-            if (!$category) {
-                return redirect()->route('category.index')->with('error', 'user not found.');
+            $department = Department::find($id);
+            if (!$department) {
+                return redirect()->route('department.index')->with('error', 'user not found.');
             }
 
             // Delete the banner and its associated image
-            $category->delete();
+            $department->delete();
 
-            return redirect()->route('category.index')->with('success', 'Category has been deleted successfully.');
+            return redirect()->route('department.index')->with('success', 'department has been deleted successfully.');
         } catch (\Exception $e) {
             // Handle any exceptions or errors
-            return redirect()->route('category.index')->with('error', 'Error deleting the Category. Please try again.');
+            return redirect()->route('department.index')->with('error', 'Error deleting the department. Please try again.');
         }
     }
 }

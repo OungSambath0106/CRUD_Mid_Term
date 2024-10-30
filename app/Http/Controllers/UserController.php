@@ -120,10 +120,10 @@ class UserController extends Controller
             Storage::delete('public/uploads/' . $user->image);
             $user->delete();
 
-            return redirect()->route('product.index')->with('success', 'Product has been deleted successfully.');
+            return redirect()->route('employees.index')->with('success', 'Product has been deleted successfully.');
         } catch (\Exception $e) {
             // Handle any exceptions or errors
-            return redirect()->route('product.index')->with('error', 'Error deleting the Product. Please try again.');
+            return redirect()->route('employees.index')->with('error', 'Error deleting the Product. Please try again.');
         }
     }
 }
